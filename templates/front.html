@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            {% for post in posts %}
+                <!-- Blog Post Content Column -->
+                <div class="col-lg-12">
+                    <!-- Blog Post -->
+                    <!-- Title -->
+                    <h1>{{ post.subject }}</h1>
+
+                    {% if post.author == user.username %}
+                        <div class="pull-right">
+                            <!-- If a user is logged in but he is not the author, add a Like button -->
+                            <!-- If a user is logged in and he is the author, add Edit and delete buttons -->
+                            <a href="#" class="btn btn-primary" role="button">
+                                <span class="glyphicon glyphicon-pencil"></span> Edit
+                            </a>
+                            <a href="#" class="btn btn-default" role="button">
+                                <span class="glyphicon glyphicon-trash"></span> Delete
+                            </a>
+                        </div>
+                    {% endif %}
+                    <!-- Author -->
+                    <p class="lead">
+                        by <em> {{ post.author.username }} </em>
+                    </p>
+                    <hr>
+                    <!-- Date/Time -->
+                    <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+                    <!-- <hr> -->
+                    <!-- Preview Image -->
+                    <!-- <img class="img-responsive" src="http://placehold.it/1200x400" alt=""> -->
+                    <hr>
+                    <!-- Post Content -->
+                    <p>{{ post.content }}</p>
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- /.row -->
+{% endblock %}

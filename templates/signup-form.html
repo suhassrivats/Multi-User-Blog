@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+    <style type="text/css">
+    .error {color: red}
+    </style>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <form method="post" id="signupform">
+                <div class="row">
+                    <h1 class="text-center col-sm-12">Sign Up</h1>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" name="username" value="{{username}}" id="username">
+                            {% if error_username %}
+                                {{ error_username }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" name="password" value="" id="password">
+                            {{ error_password }}
+                        </div>
+                        <div class="form-group">
+                            <label for="verify">Verify Password:</label>
+                            <input type="password" class="form-control" name="verify" value="" id="verify">
+                            {{ error_verify }}
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email (optional):</label>
+                            <input type="text" class="form-control" name="email" value="{{email}}" id="email">
+                            {{ error_email }}
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" class="btn btn-primary btn-block" value="Sign Up">
+                        </div>
+                    </div>
+                </div>
+                {% if params %}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-danger">
+                                {{error_username}}
+                                {{error_verify}}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+{% endblock %}
